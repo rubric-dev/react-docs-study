@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function State2() {
+export default function RenderAndCommit() {
   return (
     <section>
       <h1>Inspiring Sculptures</h1>

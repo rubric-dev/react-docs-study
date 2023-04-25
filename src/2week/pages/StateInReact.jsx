@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { sculptureList } from "../data";
 
-export default function State1() {
+export default function StateInReact() {
   let index = 0;
 
   function handleClick() {
