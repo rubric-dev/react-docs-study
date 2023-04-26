@@ -1,7 +1,24 @@
+import { useEffect, useState } from "react";
+
 export function getFinalState(baseState, queue) {
-  let finalState = baseState;
+  const [finalState, setFinalState] = useState(baseState);
 
   // TODO: do something with the queue...
+  useEffect(() => {
+    queue.map((q) => {
+      if (typeof q === "string") {
+        let increment = eval(q);
+        setFinalState(() => increment(finalState));
+      } else {
+        setFinalState(q);
+      }
+      console.log(eval(q));
+    });
+
+    return () => {
+      setFinalState(baseState);
+    };
+  }, []);
 
   return finalState;
 }

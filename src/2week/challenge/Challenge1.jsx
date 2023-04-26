@@ -5,10 +5,12 @@ export default function Challenge1() {
   const [completed, setCompleted] = useState(0);
 
   async function handleClick() {
+    // pending : 1 -> 0 초기화 되라는건가?
+    // complete : pending -> complet
     setPending(pending + 1);
     await delay(3000);
-    setPending(pending - 1);
-    setCompleted(completed + 1);
+    setPending((prev) => prev - 1);
+    setCompleted((prev) => prev + 1);
   }
 
   return (
