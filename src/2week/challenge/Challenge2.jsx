@@ -8,11 +8,10 @@ export function getFinalState(baseState, queue) {
     queue.map((q) => {
       if (typeof q === "string") {
         let increment = eval(q);
-        setFinalState(() => increment(finalState));
+        setFinalState(increment(finalState));
       } else {
         setFinalState(q);
       }
-      console.log(eval(q));
     });
 
     return () => {
