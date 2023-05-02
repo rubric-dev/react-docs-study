@@ -1,7 +1,13 @@
 export function getFinalState(baseState, queue) {
   let finalState = baseState;
 
-  // TODO: do something with the queue...
+  queue.map((item) => {
+    if (typeof item === "function") {
+      finalState = item(finalState);
+    } else {
+      finalState = item;
+    }
+  }, baseState);
 
   return finalState;
 }
