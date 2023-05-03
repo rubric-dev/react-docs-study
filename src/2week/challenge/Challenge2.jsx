@@ -1,22 +1,35 @@
-import { useState, useEffect } from "react";
+// export function getFinalState(baseState, queue) {
+//   let finalState = baseState;
 
-export function getFinalState(baseState, queue) {
-  let finalState = baseState
+//   queue.forEach((update) => {
+//     finalState = typeof update === "function" ? update(finalState) : update;
+//   });
 
-  // TODO: do something with the queue...
-  queue.map((action) => {
-    typeof action === 'function' ? finalState = action(finalState) : finalState = action
-  })
-  
-  // state를 써서 해보고 싶었는데,, 잘 안되네요ㅠ
-  // const [finalState, setFinalState] = useState(baseState)
+//   return finalState;
+// }
 
-  // useEffect(()=>{
-  //   queue.map((action) => {
-  //     typeof action === 'function'? setFinalState(n => action(n)):setFinalState(action)
-  //     console.log(finalState)
-  //   })
-  // }, [])
+export const getFinalState = (baseState, queue) =>
+  queue.reduce(
+    (state, update) => (typeof update === "function" ? update(state) : update),
+    baseState
+  );
 
-  return finalState;
-}
+// import { useEffect, useState } from "react";
+
+// export function getFinalState(baseState, queue) {
+//   const [finalState, setFinalState] = useState(baseState);
+
+//   useEffect(() => {
+//     queue.forEach((update) => setFinalState(update));
+//     return () => {
+//       setFinalState(baseState);
+//     };
+//   }, []);
+
+//   return finalState;
+// }
+
+  // My Answer
+  // queue.map((action) => {
+  //   typeof action === 'function' ? finalState = action(finalState) : finalState = action
+  // })
