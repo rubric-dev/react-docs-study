@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { produce } from "immer";
 
 const initialProducts = [
   {
@@ -22,7 +23,22 @@ export default function ShoppingCart() {
   const [products, setProducts] = useState(initialProducts);
 
   // FIXME: 이벤트핸들러를 구현하기
-  function handleIncreaseClick(productId) {}
+  function handleIncreaseClick(productId) {
+    // setProducts((prev)=>{
+    //   const newProducts = [...prev];
+    //   const targetIndex = newProducts.findIndex(({id}) => id === productId);
+    //   if ( targetIndex< 0) return;
+    //   const targetProduct = newProducts[targetIndex];
+    //   newProducts[targetIndex] = { ...targetProduct, count: targetProduct.count + 1};
+    //   return newProducts;
+    // })
+
+    // immer : 불변성을 도와주는 라이브러리
+    setProducts(produce((draft)=>{
+      const targetIndex = draft.findIndex(({id}) => id === productId);
+      draft[targetIndex].count += 1;
+    }))
+  }
 
   return (
     <ul>
