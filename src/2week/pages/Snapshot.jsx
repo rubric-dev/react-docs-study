@@ -8,9 +8,9 @@ export default function Snapshot() {
       <h1>{number}</h1>
       <button
         onClick={() => {
-          setNumber(number + 1);
-          setNumber(number + 1);
-          setNumber(number + 1);
+          setNumber(prevNumber => prevNumber + 1); //number = 0
+          setNumber(number + 1); //number = 0
+          setNumber(number + 1); //number = 0
         }}
       >
         +3
@@ -27,8 +27,8 @@ function Snapshot2() {
       <h1>{number}</h1>
       <button
         onClick={() => {
-          setNumber(number + 5);
-          alert(number);
+          setNumber(number + 5); //number =0 
+          alert(number); //number = 0
         }}
       >
         +5

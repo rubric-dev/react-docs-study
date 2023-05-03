@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import {useState} from "react";
 import { sculptureList } from "../data";
 
 export default function StateInReact() {
-  let index = 0;
+  const [index, setState] = useState(0);
 
   function handleClick() {
-    index = index + 1;
+    setState((index) => index+ 1);
   }
 
   let sculpture = sculptureList[index];
@@ -24,3 +25,5 @@ export default function StateInReact() {
     </div>
   );
 }
+//지역변수는 렌더링간에 유지되지 않음'
+//그리고 인덱스를 추하라도 리렌더링을 유ㄹㅏ지않음
